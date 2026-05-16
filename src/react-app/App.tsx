@@ -1,66 +1,60 @@
 // src/App.tsx
 
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import cloudflareLogo from "./assets/Cloudflare_Logo.svg";
-import honoLogo from "./assets/hono.svg";
-import "./App.css";
 
-function App() {
-	const [count, setCount] = useState(0);
-	const [name, setName] = useState("unknown");
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
+import {
+  Mic,
+  RotateCcw,
+  CheckCircle2,
+  XCircle,
+  Trophy,
+  BookOpen,
+  Volume2,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+  Skull,
+  Stethoscope,
+  Music,
+  RefreshCw,
+  Zap,
+  Star,
+  BarChart2,
+  VolumeX,
+  Home,
+  Play,
+  Heart,
+  Search,
+  Sun,
+  Moon,
+  Timer,
+  List,
+  Award,
+  Flame,
+  Target,
+  X,
+  ArrowLeft,
+  ArrowRight,
+  Wind,
+  Repeat2,
+} from "lucide-react";
+import { TEKERLEMELER_DATA } from "@/data/tekerlemeler";
 
-	return (
-		<>
-			<div>
-				<a href="https://vite.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-				<a href="https://hono.dev/" target="_blank">
-					<img src={honoLogo} className="logo cloudflare" alt="Hono logo" />
-				</a>
-				<a href="https://workers.cloudflare.com/" target="_blank">
-					<img
-						src={cloudflareLogo}
-						className="logo cloudflare"
-						alt="Cloudflare logo"
-					/>
-				</a>
-			</div>
-			<h1>Vite + React + Hono + Cloudflare</h1>
-			<div className="card">
-				<button
-					onClick={() => setCount((count) => count + 1)}
-					aria-label="increment"
-				>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<div className="card">
-				<button
-					onClick={() => {
-						fetch("/api/")
-							.then((res) => res.json() as Promise<{ name: string }>)
-							.then((data) => setName(data.name));
-					}}
-					aria-label="get name"
-				>
-					Name from API is: {name}
-				</button>
-				<p>
-					Edit <code>worker/index.ts</code> to change the name
-				</p>
-			</div>
-			<p className="read-the-docs">Click on the logos to learn more</p>
-		</>
-	);
+type Screen = "menu" | "game" | "summary" | "stats" | "browse" | "timed-summary";
+type GameMode = "mistakes" | "category" | "all" | "favorites" | "timed" | "hardest";
+
+interface Stats {
+  totalCorrect: number;
+  totalWrong: number;
+  bestStreak: number;
+  sessionsPlayed: number;
+  timedBestScore: number;
 }
+
+const STORAGE_KEYS = {
+  mistakes: "diksiyon_mistakes",
+
+
+
 
 export default App;
